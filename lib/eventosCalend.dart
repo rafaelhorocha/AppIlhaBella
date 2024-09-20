@@ -7,12 +7,14 @@ import 'package:flutter_application_ilhabela/eventosPag.dart';
 import 'package:flutter_application_ilhabela/inicial.dart';
 import 'package:flutter_application_ilhabela/main.dart';
 import 'package:flutter_application_ilhabela/mapa.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart'; // Import necessário para inicializar os dados de localização
+import 'package:intl/intl.dart'; // Import necessário para exibir o nome do mês
 
 void main() async {
+  // Certifique-se de inicializar a formatação de data antes de rodar o app
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting('pt_BR', null);
+  await initializeDateFormatting('pt_BR', null); // Inicializando para português
+
   runApp(const EventCalendar());
 }
 
@@ -38,7 +40,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color.fromRGBO(86, 133, 177, 1),
+        color: const Color.fromRGBO(86, 133, 177, 1), // Cor de fundo
         child: Scrollbar(
           thumbVisibility: true,
           child: SingleChildScrollView(
@@ -74,17 +76,21 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  // Calendário personalizado
                   Container(
                     width: 350,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color(0xFFA0C8EE),
+                        color: const Color(
+                            0xFFA0C8EE), // Cor da borda do calendário
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const CustomCalendar(),
+                    child: const CustomCalendar(), // Componente do calendário
                   ),
+                  const SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   const SizedBox(height: 40),
                 ],
               ),
@@ -93,12 +99,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: const Color.fromRGBO(186, 222, 255, 1),
+        color: const Color.fromRGBO(186, 222, 255, 1), // Background da barra
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              icon: Image.asset('assets/img/inicio.png'),
+              icon: Image.asset('assets/img/inicio.png'), // Caminho da imagem
               iconSize: 60,
               onPressed: () {
                 Navigator.push(
@@ -108,7 +114,8 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Image.asset('assets/img/calendario.png'),
+              icon:
+                  Image.asset('assets/img/calendario.png'), // Caminho da imagem
               iconSize: 60,
               onPressed: () {
                 Navigator.of(context).push(
@@ -116,7 +123,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Image.asset('assets/img/mapa.png'),
+              icon: Image.asset('assets/img/mapa.png'), // Caminho da imagem
               iconSize: 60,
               onPressed: () {
                 Navigator.push(
@@ -126,7 +133,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Image.asset('assets/img/like.png'),
+              icon: Image.asset('assets/img/like.png'), // Caminho da imagem
               iconSize: 60,
               onPressed: () {
                 Navigator.push(
@@ -182,14 +189,15 @@ class _CustomCalendarState extends State<CustomCalendar> {
         child: Container(
           margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF2B689B) : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
+            color: isSelected
+                ? const Color(0xFF2B689B) // Azul para o dia selecionado
+                : Colors.transparent,
           ),
           child: Center(
             child: Text(
               day.toString(),
               style: const TextStyle(
-                color: Colors.white, // Cor dos dias
+                color: Colors.white, // Letra branca para todos os dias
               ),
             ),
           ),
@@ -202,16 +210,16 @@ class _CustomCalendarState extends State<CustomCalendar> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Cabeçalho com o nome do mês e setas para navegação
         Container(
-          color: const Color(0xFFA0C8EE),
+          color: const Color(0xFFA0C8EE), // Cor da barra dos meses
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
                 onPressed: () => _changeMonth(-1),
-                icon: const Icon(Icons.arrow_left,
-                    color: Colors.black), // Setinha preta
+                icon: const Icon(Icons.arrow_left, color: Colors.black),
               ),
               Text(
                 DateFormat('MMMM y', 'pt_BR')
@@ -220,17 +228,17 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black, // Texto preto
+                  color: Colors.black, // Cor preta para o mês e o ano
                 ),
               ),
               IconButton(
                 onPressed: () => _changeMonth(1),
-                icon: const Icon(Icons.arrow_right,
-                    color: Colors.black), // Setinha preta
+                icon: const Icon(Icons.arrow_right, color: Colors.black),
               ),
             ],
           ),
         ),
+        // Semana (S T Q Q S S D)
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Row(
@@ -246,6 +254,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             ],
           ),
         ),
+        // Grade de dias
         GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -254,25 +263,5 @@ class _CustomCalendarState extends State<CustomCalendar> {
         ),
       ],
     );
-  }
-}
-
-class Evento {
-  late String nome;
-  late String descricao;
-  late String links;
-  final String imagem;
-  Evento(this.nome, this.descricao, this.links, this.imagem);
-
-  void atualizarDescricao(String d) {
-    descricao = d;
-  }
-
-  void atualizarNome(String n) {
-    nome = n;
-  }
-
-  void atualizarLinks(String l) {
-    links = l;
   }
 }

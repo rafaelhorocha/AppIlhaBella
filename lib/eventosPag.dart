@@ -2,47 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ilhabela/avalia%C3%A7%C3%A3oPag.dart';
-import 'package:flutter_application_ilhabela/eventosCalend.dart';
+import 'package:flutter_application_ilhabela/eventosCalend.dart'; // Importando a nova tela
 import 'package:flutter_application_ilhabela/inicial.dart';
-import 'package:flutter_application_ilhabela/main.dart';
 import 'package:flutter_application_ilhabela/mapa.dart';
+import 'package:intl/date_symbol_data_local.dart'; // Importando para inicializar
+import 'package:intl/intl.dart';
 
-import 'eventos.dart';
-import 'praia.dart';
-
-// Definição da classe Evento
-class Evento {
-  late String nome;
-  late String descricao;
-  late String links;
-  final String imagem;
-
-  Evento(this.nome, this.descricao, this.links, this.imagem);
-
-  void atualizarDescricao(String d) {
-    descricao = d;
-  }
-
-  void atualizarNome(String n) {
-    nome = n;
-  }
-
-  void atualizarLinks(String l) {
-    links = l;
-  }
-}
-
-// Lista de eventos
-final List<Evento> eventos = [
-  Evento('Evento 1', 'Descrição do Evento 1', 'link1.com',
-      'assets/img/evento1.png'),
-  Evento('Evento 2', 'Descrição do Evento 2', 'link2.com',
-      'assets/img/evento2.png'),
-  Evento('Evento 3', 'Descrição do Evento 3', 'link3.com',
-      'assets/img/evento3.png'),
-];
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('pt_BR', null); // Inicializando a localização
   runApp(const EventPag());
 }
 
@@ -52,7 +20,7 @@ class EventPag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AppIlhaBela',
+      title: 'Botão com Imagem e Texto',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -66,7 +34,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var praias = getPraias();
     return Scaffold(
       body: Container(
         color: const Color.fromRGBO(86, 133, 177, 1),
@@ -80,36 +47,29 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(217, 217, 217, 1),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(
-                          labelText: 'Selecione a praia',
-                          border: InputBorder.none,
-                          filled: true,
-                          fillColor: Colors.transparent,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromRGBO(217, 217, 217, 1),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        items: praias.map((Praia praia) {
-                          return DropdownMenuItem<String>(
-                            value: praia.nome,
-                            child: Text(praia.nome),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            // Aqui você pode fazer qualquer lógica que precisar, como redirecionar
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const EventCalendar(),
-                              ),
-                            );
-                          }
-                        },
+                      ),
+                      onPressed: () {
+                        // Redirecionar para a tela de eventos
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EventCalendar()),
+                        );
+                      },
+                      child: const Text(
+                        'Ver Eventos',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -139,8 +99,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-
-                  // Aqui começa o mosaico de imagens inserido do primeiro código
                   Column(
                     children: [
                       Row(

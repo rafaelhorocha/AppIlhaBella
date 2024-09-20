@@ -17,7 +17,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   url_launcher: ^6.3.0
   flutter_rating_bar: ^4.0.1
-  intl: ^0.19.0
+  intl: ^0.17.0 # Altere para uma versão mais estável e amplamente utilizada
 
 dev_dependencies:
   flutter_test:
