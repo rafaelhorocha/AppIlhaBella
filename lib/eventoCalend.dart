@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ilhabela/avalia%C3%A7%C3%A3oPag.dart';
 import 'package:flutter_application_ilhabela/eventosPag.dart';
