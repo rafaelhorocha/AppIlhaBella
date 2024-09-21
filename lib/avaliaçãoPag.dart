@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print, camel_case_types, sort_child_properties_last, file_names, unused_import
 
-import 'package:file_picker/file_picker.dart'; // Pacote para upload de arquivo
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ilhabela/eventosPag.dart';
 import 'package:flutter_application_ilhabela/inicial.dart';
@@ -20,7 +20,7 @@ class avaliacaoPag extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: ExperienceScreen(),
-        bottomNavigationBar: CustomBottomNavBar(), // Adicionado aqui
+        bottomNavigationBar: CustomBottomNavBar(),
       ),
     );
   }
@@ -32,48 +32,42 @@ class ExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(86, 133, 177, 1), // Cor de fundo RGBA
+      color: const Color.fromRGBO(86, 133, 177, 1),
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // Centraliza o conteúdo
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.center, // Centraliza o texto inicial
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     'COMPARTILHE SUA EXPERIÊNCIA\ncom os outros usuários do app!',
-                    textAlign: TextAlign.center, // Centraliza o texto
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white, // Cor do texto branco
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 30),
                   Center(
                     child: Container(
-                      width: 400, // Reduz a largura do container
+                      width: 400,
                       decoration: BoxDecoration(
-                        color: const Color.fromRGBO(
-                            217, 217, 217, 1), // Cor do container
-                        borderRadius:
-                            BorderRadius.circular(10), // Borda arredondada
+                        color: const Color.fromRGBO(217, 217, 217, 1),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      padding:
-                          const EdgeInsets.all(16.0), // Espaçamento interno
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const TextField(
                             decoration: InputDecoration(
                               hintText: 'Deixe uma mensagem...',
-                              hintStyle: TextStyle(
-                                  color: Colors.grey), // Cor do texto de dica
-                              border: InputBorder.none, // Remover borda
+                              hintStyle: TextStyle(color: Colors.grey),
+                              border: InputBorder.none,
                             ),
                             maxLines: 3,
                           ),
@@ -87,8 +81,7 @@ class ExperienceScreen extends StatelessWidget {
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 itemCount: 5,
-                                itemSize:
-                                    20.0, // Diminui o tamanho das estrelas
+                                itemSize: 20.0,
                                 itemPadding:
                                     const EdgeInsets.symmetric(horizontal: 4.0),
                                 itemBuilder: (context, _) => const Icon(
@@ -103,8 +96,7 @@ class ExperienceScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           MouseRegion(
-                            cursor: SystemMouseCursors
-                                .click, // Define o cursor de clique
+                            cursor: SystemMouseCursors.click,
                             child: ElevatedButton(
                               onPressed: () async {
                                 FilePickerResult? result =
@@ -113,7 +105,6 @@ class ExperienceScreen extends StatelessWidget {
                                 if (result != null) {
                                   PlatformFile file = result.files.first;
                                   print('Arquivo selecionado: ${file.name}');
-                                  // Lógica para tratar o arquivo selecionado
                                 } else {
                                   print('Nenhum arquivo selecionado.');
                                 }
@@ -130,7 +121,7 @@ class ExperienceScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(color: Colors.white), // Divisor branco
+            const Divider(color: Colors.white),
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
@@ -138,7 +129,7 @@ class ExperienceScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Texto em branco
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -150,19 +141,18 @@ class ExperienceScreen extends StatelessWidget {
   }
 }
 
-// Custom Bottom Navigation Bar
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: const Color.fromRGBO(186, 222, 255, 1), // Background da barra
+      color: const Color.fromRGBO(186, 222, 255, 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           IconButton(
-            icon: Image.asset('assets/img/inicio.png'), // Caminho da imagem
+            icon: Image.asset('assets/img/inicio.png'),
             iconSize: 60,
             onPressed: () {
               Navigator.push(
@@ -172,7 +162,7 @@ class CustomBottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Image.asset('assets/img/calendario.png'), // Caminho da imagem
+            icon: Image.asset('assets/img/calendario.png'),
             iconSize: 60,
             onPressed: () {
               Navigator.of(context).push(
@@ -180,7 +170,7 @@ class CustomBottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Image.asset('assets/img/mapa.png'), // Caminho da imagem
+            icon: Image.asset('assets/img/mapa.png'),
             iconSize: 60,
             onPressed: () {
               Navigator.push(
@@ -190,7 +180,7 @@ class CustomBottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Image.asset('assets/img/like.png'), // Caminho da imagem
+            icon: Image.asset('assets/img/like.png'),
             iconSize: 60,
             onPressed: () {
               Navigator.push(
@@ -213,12 +203,12 @@ class PostList extends StatelessWidget {
     return const Column(
       children: [
         PostItem(
-          imageUrl: 'assets/img/foto.png', // Caminho para a imagem local
+          imageUrl: 'assets/img/foto.png',
           title: 'Praia Copá Mitsubishi',
           rating: 4,
         ),
         PostItem(
-          imageUrl: 'assets/img/foto1.png', // Caminho para a imagem local
+          imageUrl: 'assets/img/foto1.png',
           title: 'Restaurante Belo Mar',
           rating: 5,
         ),
@@ -241,28 +231,35 @@ class PostItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Row(
-        children: [
-          Image.asset(
-            imageUrl,
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: const Color.fromRGBO(86, 133, 177, 1).withOpacity(0.0),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              imageUrl,
+              width: 300,
+              height: 150,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   title,
                   style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
+                const SizedBox(width: 10),
                 RatingBarIndicator(
                   rating: rating.toDouble(),
                   itemBuilder: (context, index) => const Icon(
@@ -270,12 +267,12 @@ class PostItem extends StatelessWidget {
                     color: Colors.amber,
                   ),
                   itemCount: 5,
-                  itemSize: 20.0,
+                  itemSize: 15.0,
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -38,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
 
   final LatLng _center =
-      const LatLng(-23.778, -45.358); // Coordenadas aproximadas de Ilhabela
+      const LatLng(-23.778, -45.358); // Coordenadas aproximadas da Ilhabela
 
   final Set<Marker> _markers = {
     Marker(
@@ -71,22 +71,21 @@ class _MapScreenState extends State<MapScreen> {
       appBar: AppBar(
         title: const Text(
           'Mapa da Cidade de Ilhabela',
-          style: TextStyle(color: Colors.white), // Cor do texto
+          style: TextStyle(color: Colors.white),
         ),
-        centerTitle: true, // Centraliza o título
-        backgroundColor:
-            const Color.fromRGBO(86, 133, 177, 1), // Cor do fundo da AppBar
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(86, 133, 177, 1),
       ),
       body: Container(
-        color: const Color.fromRGBO(86, 133, 177, 1), // Cor de fundo da tela
+        color: const Color.fromRGBO(86, 133, 177, 1),
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 400, // Defina a largura desejada
-                  height: 480, // Defina a altura desejada
+                  width: 400,
+                  height: 480,
                   child: GoogleMap(
                     onMapCreated: _onMapCreated,
                     initialCameraPosition: CameraPosition(
@@ -97,7 +96,6 @@ class _MapScreenState extends State<MapScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Outros widgets podem ser adicionados aqui, como botões ou ícones.
               ],
             ),
           ),

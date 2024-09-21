@@ -8,9 +8,15 @@ class Avaliacao {
 
   Avaliacao(this.mensagem, this.avaliacao, this.arquivos, this.praia);
 
-  void selecionarEstrelas() {}
+  void atualizarMensagem(String newMsg) {
+    mensagem = newMsg;
+  }
 
-  // Método que será chamado ao clicar no botão
+  void atualizarAvaliacao(String newAval) {
+    avaliacao = newAval;
+  }
 
-  // Método que será chamado ao clicar no botão
+  void atualizarpraia(String newAval) {
+    praia = newAval;
+  }
 }

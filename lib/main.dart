@@ -26,27 +26,23 @@ class IlhaBelaExperience extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double
-            .infinity, // Faz com que o container azul ocupe toda a largura
-        height:
-            double.infinity, // Faz com que o container azul ocupe toda a altura
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
-          color: Color(0xFF608AC7), // cor de fundo azul
+          color: Color(0xFF608AC7),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Placeholder para a imagem do topo
             SizedBox(
               width: 300,
               height: 300,
               child: Image.asset(
-                'assets/img/logo.png', // Verifique se o caminho está correto
+                'assets/img/logo.png',
                 fit: BoxFit.contain,
               ),
             ),
             const SizedBox(height: 0),
-            // Texto "IlhaBela Experience" com sombra
             const Text(
               'IlhaBela\nExperience',
               textAlign: TextAlign.center,
@@ -56,31 +52,27 @@ class IlhaBelaExperience extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 249, 249),
                 shadows: [
                   Shadow(
-                    offset: Offset(6.0, 6.0), // Deslocamento da sombra
-                    blurRadius: 2.0, // Raio de desfoque da sombra
-                    color: Colors.black45, // Cor da sombra
+                    offset: Offset(6.0, 6.0),
+                    blurRadius: 2.0,
+                    color: Colors.black45,
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 80),
-            // Botão "Entrar"
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const InicioPag()),
                 );
-                // Ação do botão "Entrar"
               },
               style: ElevatedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                backgroundColor: const Color.fromARGB(
-                    255, 232, 246, 255), // Cor de fundo do botão
+                backgroundColor: const Color.fromARGB(255, 232, 246, 255),
                 shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(15), // Bordas arredondadas
+                  borderRadius: BorderRadius.circular(15),
                 ),
               ),
               child: const Row(
@@ -89,7 +81,7 @@ class IlhaBelaExperience extends StatelessWidget {
                   Text(
                     'Entrar',
                     style: TextStyle(
-                      color: Color(0xFF608AC7), // Cor do texto
+                      color: Color(0xFF608AC7),
                       fontSize: 26,
                     ),
                   ),
@@ -98,7 +90,6 @@ class IlhaBelaExperience extends StatelessWidget {
                     Icons.arrow_forward,
                     color: Color(0xFF608AC7),
                     size: 26,
-                    // Cor do ícone
                   ),
                 ],
               ),

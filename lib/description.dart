@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'comoChegar.dart'; // Importando a classe ComoChegar
-import 'praia.dart'; // Importando a classe Praia
+import 'comoChegar.dart';
+import 'praia.dart';
 
 class DescriptionPage extends StatelessWidget {
   final Praia praia;
@@ -41,7 +41,6 @@ class DescriptionPage extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
-              // Adicione aqui a descrição de como chegar, se necessário
               const Text(
                 'Informações de como chegar podem ser adicionadas aqui.',
                 style: TextStyle(fontSize: 16, color: Colors.white),

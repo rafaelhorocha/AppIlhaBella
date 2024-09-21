@@ -9,10 +9,6 @@ import 'package:flutter_application_ilhabela/praia.dart';
 
 import 'ComoChegar.dart';
 
-// Modelo de Praia
-
-// Função para obter a lista de praias
-
 void main() {
   runApp(const InicioPag());
 }
@@ -37,11 +33,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var praias = getPraias(); // Obtém a lista de praias
+    var praias = getPraias();
 
     return Scaffold(
       body: Container(
-        color: const Color.fromRGBO(86, 133, 177, 1), // Background da tela
+        color: const Color.fromRGBO(86, 133, 177, 1),
         child: Scrollbar(
           thumbVisibility: true,
           child: SingleChildScrollView(
@@ -74,8 +70,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-
-                  // Loop para exibir as praias
                   for (int index = 0; index < praias.length; index++)
                     Column(
                       children: [
@@ -229,7 +223,6 @@ class StackButton extends StatelessWidget {
   }
 }
 
-// Página de descrição
 class DescriptionPage extends StatelessWidget {
   final int index;
 
@@ -237,9 +230,8 @@ class DescriptionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var praias = getPraias(); // Obtenha as praias novamente aqui
+    var praias = getPraias();
 
-    // Informações de como chegar
     var comoChegar = {
       'Carro':
           'Para chegar a Ilhabela de carro, parta de São Paulo pela Rodovia dos Tamoios (SP-099) em direção a Caraguatatuba. Na altura do km 16, conecte-se à Rodovia Rio-Santos (BR-101) até Caraguatatuba. Depois, siga as placas para a SP-131, que leva ao ferryboat, com uma travessia de cerca de 15 minutos. Após desembarcar, você estará em Ilhabela, pronto para explorar suas belas praias e atrações. É recomendável verificar os horários do ferryboat, especialmente nos fins de semana e feriados, pois pode haver filas.',
@@ -249,25 +241,22 @@ class DescriptionPage extends StatelessWidget {
           'Para chegar a Ilhabela de barco, você pode embarcar em uma das embarcações que partem de São Sebastião. O trajeto leva cerca de 15 a 20 minutos e oferece vistas panorâmicas da costa. Existem diferentes opções de serviços, desde barcos de passeio até embarcações particulares. Ao desembarcar, você pode explorar a ilha, suas praias e trilhas. É importante verificar os horários de saída e a disponibilidade de serviços, especialmente durante a alta temporada, para garantir uma viagem tranquila.',
     };
 
-    // Acessando a praia correspondente
     var praia = praias[index];
 
     return Scaffold(
       appBar: AppBar(
         title: Text(praia.nome),
-        backgroundColor: const Color(0xFF5685B1), // Cor da AppBar
+        backgroundColor: const Color(0xFF5685B1),
       ),
       body: Container(
-        color: const Color(0xFF5685B1), // Cor de fundo
+        color: const Color(0xFF5685B1),
         child: Scrollbar(
           thumbVisibility: true,
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // Centralizar conteúdo
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Exibindo a imagem da praia sem bordas arredondadas
                 Image.asset(
                   praia.imagem,
                   width: 400,
@@ -275,33 +264,30 @@ class DescriptionPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 16),
-                // Nome da praia centralizado
                 Text(
                   praia.nome,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white, // Cor do texto
+                    color: Colors.white,
                   ),
-                  textAlign: TextAlign.center, // Centraliza o texto
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
-                // Descrição da praia
                 Text(
                   praia.descricao,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.white, // Cor do texto
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 16),
-                // Informações de como chegar
                 const Text(
                   'Como Chegar:',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white, // Cor do texto
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 8),
