@@ -18,6 +18,7 @@ dependencies:
   url_launcher: ^6.3.0
   flutter_rating_bar: ^4.0.1
   intl: ^0.17.0 # Altere para uma versão mais estável e amplamente utilizada
+  table_calendar: ^3.0.8
 
 dev_dependencies:
   flutter_test:

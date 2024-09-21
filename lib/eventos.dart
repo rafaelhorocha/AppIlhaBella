@@ -2,12 +2,12 @@ class Evento {
   late String nome;
   late String imagem;
   late String descricao;
-  late String data;
+  late String dia;
   late String hora;
   late String local;
   late String links;
 
-  Evento(this.nome, this.imagem, this.descricao, this.data, this.hora,
+  Evento(this.nome, this.imagem, this.descricao, this.dia, this.hora,
       this.local, this.links);
 
   void atualizarNome(String newNome) {
